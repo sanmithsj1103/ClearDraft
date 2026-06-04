@@ -1,0 +1,43 @@
+# --- Python / Backend ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+backend/.venv/
+backend/venv/
+
+# Environment configurations containing credentials
+.env
+backend/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# pytest caches
+.pytest_cache/
+
+# --- Node / Frontend ---
+node_modules/
+frontend/node_modules/
+/dist/
+frontend/dist/
+dist-ssr/
+*.local
+
+# Editor / IDE configuration files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS metadata
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,6 +1,6 @@
 # ClearDraft — Product Requirements Document (PRD)
 
-**Version:** 1.1  
+**Version:** 1.0  
 **Date:** June 2026  
 **Author:** Sanmith  
 **Status:** Draft

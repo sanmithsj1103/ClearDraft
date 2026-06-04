@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-brand-bg text-brand-text font-sans antialiased;
+    background-color: #FAF9F6;
+  }
+}
+
+/* Custom minimal scrollbars inspired by Claude.ai */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E5E5E0;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #D1D1C7;
+}
+
+/* Shimmer Loading Animation for output skeletons */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, #F3F3EF 25%, #EBEBE4 50%, #F3F3EF 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite linear;
+}
+
+/* Custom focus ring matching the minimal brand */
+.focus-ring {
+  @apply focus:outline-none focus:ring-1 focus:ring-brand-accent focus:border-brand-accent;
+}
+
+/* Soft card container */
+.claude-card {
+  @apply bg-white border border-brand-border rounded-xl transition-all duration-200;
+}
