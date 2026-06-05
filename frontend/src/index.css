@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,12 +6,12 @@
 
 @layer base {
   body {
-    @apply bg-brand-bg text-brand-text font-sans antialiased;
-    background-color: #FAF9F6;
+    @apply bg-stitch-bg text-stitch-text font-sans antialiased;
+    background-color: #F8FAFC;
   }
 }
 
-/* Custom minimal scrollbars inspired by Claude.ai */
+/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -22,12 +22,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #E5E5E0;
+  background: #CBD5E1;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D1D1C7;
+  background: #94A3B8;
 }
 
 /* Shimmer Loading Animation for output skeletons */
@@ -41,17 +41,11 @@
 }
 
 .shimmer-bg {
-  background: linear-gradient(90deg, #F3F3EF 25%, #EBEBE4 50%, #F3F3EF 75%);
+  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite linear;
 }
 
-/* Custom focus ring matching the minimal brand */
 .focus-ring {
-  @apply focus:outline-none focus:ring-1 focus:ring-brand-accent focus:border-brand-accent;
-}
-
-/* Soft card container */
-.claude-card {
-  @apply bg-white border border-brand-border rounded-xl transition-all duration-200;
+  @apply focus:outline-none focus:ring-2 focus:ring-stitch-primary/20 focus:border-stitch-primary;
 }

@@ -7,17 +7,20 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          bg: '#FAF9F6', // Claude-like warm off-white
-          text: '#111111', // Charcoal black
-          muted: '#666666', // Gray
-          border: '#E5E5E0', // Light warm gray
-          accent: '#D97706', // Warm amber
-          accentHover: '#B45309', // Darker amber
+        stitch: {
+          bg: '#F8FAFC',        // Slate background
+          sidebar: '#F1F5F9',   // Light gray sidebar
+          primary: '#0B57D0',   // Google/Stitch blue
+          primaryHover: '#0842A0',
+          record: '#B3261E',    // Recording red
+          recordHover: '#8C1D18',
+          text: '#1E293B',      // Dark slate text
+          muted: '#64748B',     // Cool gray text
+          border: '#E2E8F0',    // Slate border
         }
       },
       fontFamily: {
-        sans: ['Inter', 'Outfit', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
       }
     },
   },

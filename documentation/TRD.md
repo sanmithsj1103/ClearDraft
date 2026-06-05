@@ -28,7 +28,7 @@ To satisfy the user requirements, the application will use the following technol
 *   **Styling:** Tailwind CSS (for utility-first, rapid, and fully responsive layout design).
 *   **Backend Framework:** Python + FastAPI (asynchronous, high performance, automatic OpenAPI documentation).
 *   **ASGI Server:** Uvicorn (to run the FastAPI backend server).
-*   **LLM Service:** Google Gemini API (specifically `gemini-2.5-flash` model, using the free tier API key).
+*   **LLM Service:** Google Gemini API (specifically `gemini-3.5-flash` model, using the free tier API key).
 
 ### 2.2 Suggested Auxiliary Tools & Libraries
 #### Frontend (React)
@@ -146,7 +146,7 @@ Processes raw text according to a specified Output Mode, applying custom system 
 
 ## 5. Gemini API Integration & Prompt Engineering
 
-The integration will use the `gemini-2.5-flash` model, which features a massive 1-million-token context window and native audio processing capabilities. 
+The integration will use the `gemini-3.5-flash` model, which features a massive 1-million-token context window and native audio processing capabilities. 
 
 ### 5.1 Native Audio Transcription with Gemini 1.5 Flash
 Since we are using the free Gemini API, we can bypass a separate Whisper API by sending audio files directly to Gemini! Gemini 1.5 Flash supports audio inputs natively.

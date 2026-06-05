@@ -31,10 +31,10 @@ def is_mock_active() -> bool:
 
 def transcribe_audio(file_bytes: bytes, mime_type: str) -> str:
     """
-    Transcribes raw audio bytes using Gemini 2.5 Flash.
+    Transcribes raw audio bytes using Gemini 3.5 Flash.
     """
     try:
-        model = genai.GenerativeModel("gemini-2.5-flash")
+        model = genai.GenerativeModel("gemini-3.5-flash")
         prompt = (
             "You are an expert transcription assistant. Accurately transcribe the spoken audio verbatim. "
             "Correct minor run-on sentences and punctuation, but do not summarize, rephrase, or add any "
@@ -70,7 +70,7 @@ def generate_polished_content(text: str, mode: str, tone: str = None) -> str:
             system_instruction = system_instruction.format(tone=tone)
         
         model = genai.GenerativeModel(
-            model_name="gemini-2.5-flash",
+            model_name="gemini-3.5-flash",
             system_instruction=system_instruction
         )
         

@@ -81,12 +81,12 @@
 ### 2.3 Gemini API Service
 1.  Implement `services/gemini.py` using `google-generativeai` to authenticate using the environment key.
 2.  Write a function `transcribe_audio_file(file_bytes, mime_type)`:
-    *   Pass the audio bytes directly to the Gemini API (`gemini-2.5-flash` model).
+    *   Pass the audio bytes directly to the Gemini API (`gemini-3.5-flash` model).
     *   Provide a transcription instruction prompt: *"Accurately transcribe the audio. Retain exact wording but remove speech disfluencies (like 'um', 'uh', 'like'). Output only the transcript without comments."*
 3.  Write a function `generate_polished_content(text, mode, tone=None)`:
     *   Select the correct prompt template from `prompts.py` based on `mode`.
     *   Format it with variables (like `tone`).
-    *   Query the `gemini-2.5-flash` model to return the final output.
+    *   Query the `gemini-3.5-flash` model to return the final output.
 
 ### 2.4 Endpoints Development
 1.  **`POST /api/transcribe`**:
