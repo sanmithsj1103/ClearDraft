@@ -153,7 +153,8 @@ export default function ComposeCard() {
     { id: 'formal_letter', label: 'Formal Letter' },
     { id: 'story', label: 'Short Narrative Story' },
     { id: 'todo', label: 'Action Checklist' },
-    { id: 'prompting', label: 'AI Prompt Builder' }
+    { id: 'prompting', label: 'AI Prompt Builder' },
+    { id: 'ppt', label: 'PowerPoint Presentation' }
   ];
 
   return (

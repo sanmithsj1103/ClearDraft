@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useAppStore } from '../store/useAppStore';
+import axios from 'axios';
 import { 
   Sparkles, Copy, Check, Edit3, Save, Zap, ShieldAlert, 
   Lock, AlertCircle, FileText, Download, RotateCcw 
@@ -7,6 +8,8 @@ import {
 
 export default function OutputCard() {
   const outputContent = useAppStore((state) => state.outputContent);
+  const selectedMode = useAppStore((state) => state.selectedMode);
+  const slidesData = useAppStore((state) => state.slidesData);
   const isProcessing = useAppStore((state) => state.isProcessing);
   const isEditing = useAppStore((state) => state.isEditing);
   const errorMessage = useAppStore((state) => state.errorMessage);
@@ -16,6 +19,36 @@ export default function OutputCard() {
   const generateOutput = useAppStore((state) => state.generateOutput);
 
   const [copied, setCopied] = useState(false);
+  const [downloading, setDownloading] = useState(false);
+
+  const handleDownloadPPT = async () => {
+    if (!slidesData) return;
+    setDownloading(true);
+    try {
+      const response = await axios.post('http://localhost:8000/api/download-ppt', {
+        slides: slidesData
+      }, {
+        responseType: 'blob'
+      });
+      
+      const blob = new Blob([response.data], { 
+        type: 'application/vnd.openxmlformats-officedocument.presentationml.presentation' 
+      });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', 'presentation.pptx');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Failed to download PowerPoint file:', err);
+      alert('Failed to build and download PowerPoint file.');
+    } finally {
+      setDownloading(false);
+    }
+  };
 
   const handleCopy = async () => {
     if (!outputContent) return;
@@ -92,6 +125,20 @@ export default function OutputCard() {
                 >
                   {isEditing ? <Save className="h-3.5 w-3.5" /> : <Edit3 className="h-3.5 w-3.5" />}
                 </button>
+
+                {/* Download PPT */}
+                {selectedMode === 'ppt' && slidesData && (
+                  <button
+                    disabled={downloading || isOffline}
+                    onClick={handleDownloadPPT}
+                    className={`inline-flex items-center gap-1.5 rounded-lg border border-stitch-primary/30 bg-stitch-primary/5 px-3 py-2 text-xs font-semibold text-stitch-primary shadow-sm hover:bg-stitch-primary/10 transition-all select-none cursor-pointer ${
+                      downloading || isOffline ? 'opacity-50 cursor-not-allowed' : ''
+                    }`}
+                  >
+                    <Download className="h-3.5 w-3.5" />
+                    {downloading ? 'Downloading...' : 'Download PPT'}
+                  </button>
+                )}
 
                 {/* Copy */}
                 <button

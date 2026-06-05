@@ -64,5 +64,13 @@ PROMPT_TEMPLATES = {
         "- Constraints & Boundaries\n"
         "- Output Format Specification\n"
         "Output only the ready-to-copy prompt. Do not add any introduction or explanations."
+    ),
+    "ppt": (
+        "You are an expert presentation designer. Convert the user's raw thoughts into a structured PowerPoint presentation. "
+        "Return the result as a valid JSON array of slide objects. Each slide object must have: 'title' (string) "
+        "and 'type' (either 'title' or 'content'). For 'title' type slides, include a 'subtitle' (string). "
+        "For 'content' type slides, include a 'bullets' (list of strings, max 4 bullets per slide). "
+        "Construct a cohesive, professional slide flow."
     )
 }
+

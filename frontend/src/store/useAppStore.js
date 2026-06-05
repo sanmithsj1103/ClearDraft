@@ -9,6 +9,7 @@ export const useAppStore = create((set, get) => ({
   tone: 'formal',               // 'formal' | 'semi-formal' | 'friendly'
   rawText: '',                  // input text
   outputContent: '',            // polished draft
+  slidesData: null,             // presentation parsed slides
   isRecording: false,
   isProcessing: false,
   isEditing: false,             // inline editor flag
@@ -42,6 +43,7 @@ export const useAppStore = create((set, get) => ({
   resetWorkspace: () => set({
     rawText: '',
     outputContent: '',
+    slidesData: null,
     isRecording: false,
     isProcessing: false,
     isEditing: false,
@@ -126,6 +128,7 @@ export const useAppStore = create((set, get) => ({
       if (response.data.success) {
         set({ 
           outputContent: response.data.output,
+          slidesData: response.data.slides || null,
           isProcessing: false 
         });
         // Auto-save to drafts list on successful generation

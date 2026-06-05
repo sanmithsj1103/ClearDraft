@@ -1,6 +1,7 @@
 import os
 import logging
 from dotenv import load_dotenv
+# pyrefly: ignore [missing-import]
 import google.generativeai as genai
 from app.prompts import PROMPT_TEMPLATES
 
@@ -74,7 +75,9 @@ def generate_polished_content(text: str, mode: str, tone: str = None) -> str:
             system_instruction=system_instruction
         )
         
-        response = model.generate_content(text)
+        # Request JSON output specifically for PPT mode
+        gen_config = {"response_mime_type": "application/json"} if mode == "ppt" else None
+        response = model.generate_content(text, generation_config=gen_config)
         
         if not response.text:
             raise ValueError("Empty response received from Gemini API.")
@@ -83,3 +86,4 @@ def generate_polished_content(text: str, mode: str, tone: str = None) -> str:
     except Exception as e:
         logger.error(f"Error during Gemini content generation: {str(e)}")
         raise e
+
